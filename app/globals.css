@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0f0d;
+  --foreground: #e7efeb;
+  --card: #111815;
+  --muted: #18211d;
+  --muted-foreground: #8b9b94;
+  --border: #22302a;
+  --primary: #25d366;
+  --primary-foreground: #04130a;
+  --destructive: #f05252;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-destructive: var(--destructive);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  .btn-outline {
+    @apply btn border border-border bg-transparent text-foreground hover:bg-muted;
+  }
+  .btn-ghost {
+    @apply btn text-muted-foreground hover:bg-muted hover:text-foreground;
+  }
+  .btn-danger {
+    @apply btn border border-destructive/40 text-destructive hover:bg-destructive/10;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .input {
+    @apply w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-medium text-muted-foreground;
+  }
+  .card {
+    @apply rounded-lg border border-border bg-card;
+  }
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-widest text-primary;
+  }
+}
